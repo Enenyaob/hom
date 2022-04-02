@@ -1,0 +1,90 @@
+
+.doc{
+	
+	 -moz-transition: all 0.5s ease;
+	 -webkit-transition: all 0.5s ease;
+	 -o-transition: all 0.5s ease;
+	 -ms-transition: all 0.5s ease;
+	 transition: all 0.5s ease;
+	 position: relative;
+ }
+ 
+ 
+.doc:hover{
+	 -moz-transform: scale(1.5);
+	 -webkit-transform: scale(1.5);
+	 -ms-transform: scale(1.5);
+	 -o-transform: scale(1.5);
+	 transform: scale(1.5);
+	 z-index: 1;
+	 background: trasnparent;
+	 border: none;
+	 position: relative;
+}
+	 
+ #doc1{
+	 background: url()no-repeat  ;
+	 width:250px;
+	 height:250px;
+	 }
+	 
+	 #doc2{
+	 background: url()no-repeat  ;
+	 width:250px;
+	 height:250px;
+	 link:hyperlink.html
+ }
+ #doc3{
+	 background: url()no-repeat  ;
+	 width:250px;
+	 height:250px;
+ }
+ #doc4{
+	 background: url()no-repeat  ;
+	 width:250px;
+	 height:250px;
+ }
+ #doc5{
+	 background: url()no-repeat  ;
+	 width:250px;
+	 height:250px;
+ }
+ #doc6{
+	 background: url()no-repeat  ;
+	 width:250px;
+	 height:250px;
+ }
+ #doc7{
+	 background: url()no-repeat  ;
+	 width:250px;
+	 height:250px;
+ }
+ #doc8{
+	 background: url(.png)no-repeat  ;
+	 width:250px;
+	 height:250px;
+ }
+ #doc9{
+	 background: url()no-repeat  ;
+	 width:250px;
+	 height:250px;
+ }
+ #doc10{
+	 background: url()no-repeat  ;
+	 width:250px;
+	 height:250px;
+	
+ }
+  #doc11{
+	 background: url()no-repeat  ;
+	 width:250px;
+	 height:250;
+	  position:center;
+ }
+  #doc12{
+	 background: url(piz/head.png)no-repeat  ;
+	 width:1200px;
+	 height:30px;
+	 positioning:right;
+	  z-index: 1;
+ }

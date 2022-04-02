@@ -1,0 +1,26 @@
+
+.layout-boxed .body-innerwrapper {
+  background: #f9f9f9;
+}
+
+blockquote {
+  border-color: #02817b;
+}
+.carousel-left:hover,
+.carousel-right:hover {
+  background: #02817b;
+}
+.event-details-section .sppb-addon-single-image .sppb-addon-title,
+.splms.splms-view-event .splms-event-image .event-date,
+#sp-top-bar,
+.splms.splms-view-events .splms-event-details .btn.btn-primary,
+.scrollup,
+.sppb-addon-tweet .sppb-tweet-slider .sppb-carousel-indicators li:before,
+.speasyimagegallery-albums .speasyimagegallery-album:hover .speasyimagegallery-album-info {
+  background: #02817b;
+}
+.splms.splms-view-events .event-date-wrape .event-date:before,
+.sppb-addon-gallery ul.sppb-gallery >li a:after,
+.speasyimagegallery-gallery .speasyimagegallery-gallery-item > div:after {
+  background: rgba(0,140,140,0.85);
+}
