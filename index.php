@@ -1,3 +1,10 @@
+<?php 
+if(!isset($_SESSION)){
+
+}else{
+	require_once("php/session.php"); 
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +17,7 @@
 	<!-- Custom css --> 
 		<link href="css/custom.css" rel="stylesheet">
 	</head>
-	<body id="home" class="no-trans  transparent-header  ">
+	<body id="home" class="no-trans  transparent-header ">
 
 		<!-- scrollToTop -->
 		<!-- ================ -->

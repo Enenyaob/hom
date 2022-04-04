@@ -58,9 +58,9 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
 				<div class="container">
 					<ol class="breadcrumb">
 				
-                        <li><i class="fa fa-home pr-10"></i><a href="pastorate">Dash Board</a></li>
+                        <li><i class="fa fa-home pr-10"></i><a href="<?php echo lcfirst($_SESSION['role']); ?>"><?php echo $_SESSION['role']; ?></a></li>
                        
-						<li class="active">View Prayer Requests</li>
+						<li class="active"><?php echo $item[$current_page]; ?></li>
 					</ol>
 				</div>
 			</div>
