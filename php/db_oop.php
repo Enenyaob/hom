@@ -82,7 +82,7 @@ class Connection
         return $statement->fetchALL(PDO::FETCH_ASSOC);
     }
 
-    public function loginUser($user_name, $password)
+    public function loginUser($user_name, $role1)
     {
         $statement = $this->pdo->prepare("SELECT user_id,  user_name, role, secure_pass FROM  user_pass WHERE user_name = :user_name  AND role = :role");
         $statement->bindValue('user_name', $user_name);
@@ -101,12 +101,13 @@ class Connection
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function addRequest($note)
+    public function addRequest($name, $email, $request)
     {
-        $statement = $this->pdo->prepare("INSERT INTO prayer_request (name, request, create_date)
-                                    VALUES (:name, :request, :date)");
-        $statement->bindValue('name', $request['name']);
-        $statement->bindValue('request', $request['request']);
+        $statement = $this->pdo->prepare("INSERT INTO prayer_request (name, email, request, create_date)
+                                    VALUES (:name, :email, :request, :date)");
+        $statement->bindValue('name', $name);
+        $statement->bindValue('email', $email);
+        $statement->bindValue('request', $request);
         $statement->bindValue('date', date('Y-m-d H:i:s'));
         return $statement->execute();
     }
