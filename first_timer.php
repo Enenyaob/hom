@@ -179,11 +179,8 @@ require_once ('php/includes/user_navigation.php');
 												<div class="invalid-feedback">
 											<p id="demo"></p>
 											 <span class="text-danger small"><?php echo $errors['first_name'] ?? ''?></span>
-
-
 										</div>
 										</div>
-										
 									</div>
 
 								<div class="form-group has-feedback">
