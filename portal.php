@@ -8,7 +8,13 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
     $user_name =  htmlspecialchars(trim(post_data('user_name')));
     $password = htmlspecialchars(trim(post_data('password')));
     $role1 =  htmlspecialchars(trim(post_data('role')));
-  
+
+    validateUsername($user_name, $errors);
+    validatePassword($password, $errors);
+    validateRole($role1, $errors);
+    if(!empty($errors)){
+			$status = 'Oh Snap! Ensure required fields are filled correctly';
+    }
    
       $statement = $conn->prepare("SELECT user_id,  user_name, role, secure_pass FROM  user_pass WHERE user_name = :user_name  AND role = :role" );
         $statement->bindValue('user_name', $user_name);
@@ -148,7 +154,7 @@ h1{
 
   <body class="text-center">
 
-  <form action="" method="post" class="form-signin">
+  <form action="" method="post" class="form-signin" id="portal-form">
   <img class="mb-4"  src="images/logo.png" alt="Houseofmercy" width="130" height="70">
   <h1 >Please sign in</h1>
     <?php
@@ -163,21 +169,16 @@ h1{
                   }
                 ?>
   <label for="inputEmail" class="sr-only">Email address</label>
-  <input type="text" class="form-control" name="user_name" placeholder="User Name" required autofocus>
+  <input type="text" class="form-control" name="user_name" id="uname" placeholder="User Name" required autofocus>
   <label for="inputPassword" class="sr-only">Password</label>
-  <input type="password" name="password" class="form-control" placeholder="Password" required>
+  <input type="password" name="password" class="form-control" id="pwd" placeholder="Password" required>
   <label for="role" class="sr-only">Role</label>
     <select name="role" class="form-control" id="select">
-                            <option value="Please select">Select role</option>
+                            <option value="">Select role</option>
                                   <option value="Admin">Admin</option>
                                   <option value="Counselor">Counselor</option>
                                   <option value="Pastorate">Pastorate</option>
                         </select>
-  <div class="checkbox mb-3">
-    <label>
-      <input type="checkbox" value="remember-me"> Remember me
-    </label>
-  </div>
   <button class="btn btn-lg btn-primary btn-block" name="login" type="submit">Sign in</button>
   <p class="mt-5 mb-3 text-muted">&copy;obinna 2021</p>
 </form>
