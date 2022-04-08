@@ -12,7 +12,7 @@ $connection = require_once ('php/db_oop.php');
 	    if(!empty($errors)){
 		 	$status = 'Oh Snap! Ensure required field is entered correctly';
 		 }else{
- 		$results = $connection->getFirst_timer($key);
+ 		$results = $connection->getMember($key);
  		if(count($results) > 0 ){
  			$msg = 'Record found';
  		}elseif(count($results) == 0){
@@ -72,8 +72,8 @@ $connection = require_once ('php/db_oop.php');
 
 			<!-- section start -->
 			<!-- ================ -->
-				<section class="pv-30 light-gray-bg clearfix">
-					<div class="container">
+		    <section class="pv-30 light-gray-bg clearfix">
+			  <div class="container">
                     <h3 class="title logo-font text-center ">Welcome 
                     <b class="text-danger"><?php echo  ucfirst($_SESSION['MM_Username']) ; ?></b></h3>
 					<div class="separator"></div>
@@ -118,23 +118,21 @@ $connection = require_once ('php/db_oop.php');
                <div class="col-md-9">
                	<div class="main">
 					<h3 class="title  text-default"><b>Seach Member</b></h3>
-                             <?php
-									if(isset($status)){
-										echo "<p class='text-center text-uppercase' style='color:red'>{$status}</p>";
-									}
-									else if(isset($msg)){
-										echo "<p class='text-center text-uppercase' style='color:green'>{$msg}</p>";
-									}
-									else{
-										echo "";
-									}
-				                ?>
-					<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> " method="post" class="form-horizontal">
+									<?php if(isset($status)) : ?>
+										<p class='text-center text-uppercase' style='color:red'><?php echo $status; ?></p>
+
+									<?php elseif(isset($msg)) : ?>
+										<p class='text-center text-uppercase' style='color:green'><?php echo $msg; ?></p>
+									
+									<?php else : ?>
+										
+									<?php endif; ?> 
+					            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> " method="post" id="data-form" class="form-horizontal">
 									<div class="form-group has-feedback">
-										<label for="last_name" class="col-sm-3 control-label">Name</label>
+										<label for="first_name" class="col-sm-3 control-label">Name</label>
 										<div class="col-sm-5">
-											<input type="text" class="form-control" name="first_name"  placeholder="Enter Name">
-											<button type="submit" name="submit_member" class="btn btn-group btn-default btn-animated">Search <i class="fa fa-home"></i></button>
+											<input type="text" class="form-control" name="first_name" id="first_name" placeholder="Enter Name">
+											<button type="submit" name="submit_member" class="btn btn-group btn-default btn-animated">Search <i class="fa fa-search"></i></button>
 											<i class="fa fa-user form-control-feedback"></i>
 												<div class="invalid-feedback">
 											
@@ -150,54 +148,39 @@ $connection = require_once ('php/db_oop.php');
                     
 					<div class="separator"></div>
 					 
-					   <div class="table-responsive">
-  <table class="table">
-    <?php $table = '<thead>
-    <tr class="info">
-    <th>Name</th>
-    <th> Group </th>
-    <th> Sex </th>
-    <th>Address</th>
-    <th>Phone No. </th>
-    
-    </tr>
-     </thead>';
-     if(isset($results) && count($results) > 0){
-     	echo "$table";
-     }else{
-     	
-     }
-     ?>
-      <?php if( isset($results) && is_array($results) ): ?>
-	<?php foreach ($results as $result): ?>
-	<?php
-		
-	if(isset($msg)){
-		 $results;
-		 }else{
-		 	if(isset($status)){
-		 	echo $status;
-		 }
-		 }
-		  ?>
-		  
-     <tbody>
-     	<td><?php echo $result['first_name']." ".$result['last_name'] ?></td><td><?php echo $result['age_group'] ?></td><td><?php echo $result['gender'] ?></td><td><?php echo $result['home_address'] ?></td><td><?php echo $result['phone_no'] ?></td>
-       </tbody>
-       <?php endforeach; ?>
-		  <?php endif; ?>
-  </table>
-</div>
-
-
-					<br>
+					<div class="table-responsive">
+                    <?php if (isset($msg)) : ?>
+                     <?php if (isset($results) && is_array($results)) : ?>      
+                        <table class="table">
+                            <thead>
+                                <tr class="info">
+                                    <th>Name</th>
+                                    <th> Group </th>
+                                    <th> Sex </th>
+                                    <th>Address</th>
+                                    <th>Phone No. </th>
+                                </tr>
+                            </thead>
+                            <?php endif ?> 
+                            <?php if( isset($results) && is_array($results) ): ?>
+                            <?php foreach ($results as $result): ?>
+                                
+                            <tbody>
+                                <td><?php echo $result['first_name']." ".$result['last_name'] ?></td><td><?php echo $result['age_group'] ?></td><td><?php echo $result['gender'] ?></td><td><?php echo $result['home_address'] ?></td><td><?php echo $result['phone_no'] ?></td>
+                            </tbody>
+                            <?php endforeach; ?>
+                        </table>
+                      <?php endif; ?>
+                    <?php endif; ?>
                     </div>
+                    <br>
+                </div>
 			</div>
-						</div>
+		</div>
 
 		
 					
-			</section>
+	</section>
 			<!-- section end -->
 
 			
