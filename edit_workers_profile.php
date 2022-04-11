@@ -36,7 +36,7 @@ $password2 = trim(post_data('password2'));
  	$key = htmlspecialchars(trim(post_data('phone_no')));
  	$key2 = htmlspecialchars(trim(post_data('role')));
  	$errors = validatePhone($key, $errors);;
- 	$errors = validateSelect($key2, $errors);
+ 	$errors = validateRole($key2, $errors);
 
 	    if(!empty($errors)){
 		 	$status = 'Oh Snap! Ensure required field is entered correctly';
@@ -135,18 +135,16 @@ $password2 = trim(post_data('password2'));
 			
             <div class="main">
 							<div class="form-block center-block p-30 light-gray-bg border-clear">
-                             <?php
-									if(isset($status)){
-										echo "<p class='text-center text-uppercase' style='color:red'>{$status}</p>";
-									}
-									else if(isset($msg)){
-										echo "<p class='text-center text-uppercase' style='color:green'>{$msg}</p>";
-									}
-									else{
-										echo "";
-									}
-				                ?>
-								<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> " method="post" class="form-horizontal">
+									<?php if(isset($status)) : ?>
+										<p class='text-center text-uppercase' style='color:red'><?php echo $status; ?></p>
+
+									<?php elseif(isset($msg)) : ?>
+										<p class='text-center text-uppercase' style='color:green'><?php echo $msg; ?></p>
+									
+									<?php else : ?>
+										
+									<?php endif; ?> 
+								<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> " method="post" class="form-horizontal" id="data-form">
 									<?php if (isset($results['user_id'])): ?>
 									 <div class="form-group has-feedback">
 									 	<input type="hidden" name="id" value="<?php echo $results['user_id'] ?>">
@@ -157,8 +155,6 @@ $password2 = trim(post_data('password2'));
              								<div class="invalid-feedback">
 											
 											 <span class="text-danger small"><?php echo $errors['user_name'] ?? ''?></span>
-
-
 										</div>
 										</div>
 									</div>

@@ -157,17 +157,15 @@ h1{
   <form action="" method="post" class="form-signin" id="portal-form">
   <img class="mb-4"  src="images/logo.png" alt="Houseofmercy" width="130" height="70">
   <h1 >Please sign in</h1>
-    <?php
-                  if(isset($status)){
-                    echo "<p class='text-center text-uppercase' style='color:red'>{$status}</p>";
-                  }
-                  else if(isset($msg)){
-                    echo "<p class='text-center text-uppercase' style='color:green'>{$msg}</p>";
-                  }
-                  else{
-                    echo "";
-                  }
-                ?>
+                  <?php if(isset($status)) : ?>
+										<p class='text-center text-uppercase' style='color:red'><?php echo $status; ?></p>
+
+									<?php elseif(isset($msg)) : ?>
+										<p class='text-center text-uppercase' style='color:green'><?php echo $msg; ?></p>
+									
+									<?php else : ?>
+										
+									<?php endif; ?> 
   <label for="inputEmail" class="sr-only">Email address</label>
   <input type="text" class="form-control" name="user_name" id="uname" placeholder="User Name" required autofocus>
   <label for="inputPassword" class="sr-only">Password</label>
