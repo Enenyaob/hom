@@ -3,12 +3,12 @@
    require_once ('php/includes/user_navigation.php'); 
    require_once('php/includes/function.php');
   $connection = require_once("php/db_oop.php");
-$role = 'Counselor';
-require_once("php/secure.php");
-   ?> 
+  $role = 'Counselor';
+  require_once("php/secure.php");
+?> 
  
    
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -58,11 +58,11 @@ require_once("php/secure.php");
 			<section class="pv-30 light-gray-bg clearfix">
 					<div class="container">
 						<?php if (isset($_GET["inserted"])) : ?>
-					<?php echo "<p class='text-center text-uppercase' style='color:green'>Record inserted succesfully</p>"; ?>
+					<p class='text-center text-uppercase' style='color:green'>Record inserted succesfully</p>
 					<?php else: ?>
                     <h3 class="title text-center  text-default"><b>Welcome 
                     <b class="text-danger"><?php echo  ucfirst($_SESSION['MM_Username']) ; ?></b></h3>
-               <?php endif; ?>
+               <?php endif ?>
                     <div class="separator"></div>
                 <div class="row">
                 
@@ -85,7 +85,6 @@ require_once("php/secure.php");
 
 									foreach ($item as $key => $value) {
 									    if ( $current_page == $key ) {
-									    	//<li class="active"><a href="contact.php">Contact</a></li>
 									         echo '<li class="active"><a href="' . $key . '">' . $value . '</a></li>';
 									    }
 									    else {
@@ -124,10 +123,10 @@ require_once("php/secure.php");
 						<div class="col-md-4 ">
 							<div class="pv-30 ph-20 feature-box bordered shadow text-center object-non-visible" data-animation-effect="fadeInDownSmall" data-effect-delay="150">
 								<span class="icon default-bg circle"><i class="fa fa-users"></i></span>
-								<h3>New Members</h3>
+								<h3>View all Members</h3>
 								<div class="separator clearfix"></div>
 								
-								<a href="first_timer_view">Go Here <i class="pl-5 fa fa-angle-double-right"></i></a>
+								<a href="view_all_members">Go Here <i class="pl-5 fa fa-angle-double-right"></i></a>
 							</div>
 						</div>
 						<div class="col-md-4 ">
@@ -156,13 +155,6 @@ require_once("php/secure.php");
                     <br>
 			</section>
 			<!-- section end -->
-
-			
-
-
-
-
-
 <?php  include('php/includes/layouts/footer_admin.php'); ?>
 		</div>
 		<!-- page-wrapper end -->
