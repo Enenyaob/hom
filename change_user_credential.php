@@ -6,6 +6,7 @@ $connection = require_once ('php/db_oop.php');
 $role = 'Admin';
 require_once("php/secure.php");
 
+
 if(isset($_POST['update_user'])){
 $id = htmlspecialchars(trim(post_data('id')));
 $user_name =  htmlspecialchars(trim(post_data('user_name')));
@@ -19,11 +20,22 @@ $password2 = trim(post_data('password2'));
 	$secure_pass = securePass($password);
 }
 
+	$checkUsername = $connection->checkUsername($user_name);
+	if (isset($checkUsername)) {
+		$checkname = $checkUsername['user_name'];
+	}else{
+		$checkname = null;
+	}
 
+		if ($checkname == $user_name && $user_name != $_SESSION['MM_Username']) {
+			$errors = 1;
+			$status = 'This User Name Is Not Available';
+		}else
 	    if(!empty($errors)){
 		 	$status = 'Oh Snap! Ensure required field is entered correctly';
 		 }else{
 		 	if($connection->updateLogin($id, $user_name,$secure_pass)){
+				 header("location: $home?inserted");
 		 		 $msg = 'Update inserted succesfully';
 		 	}else{
 		 	$status = 'Something went wrong';
@@ -36,7 +48,7 @@ $password2 = trim(post_data('password2'));
  	$key = htmlspecialchars(trim(post_data('phone_no')));
  	$key2 = htmlspecialchars(trim(post_data('role')));
  	$errors = validatePhone($key, $errors);;
- 	$errors = validateSelect($key2, $errors);
+ 	$errors = validateRole($key2, $errors);
 
 	    if(!empty($errors)){
 		 	$status = 'Oh Snap! Ensure required field is entered correctly';
@@ -135,18 +147,16 @@ $password2 = trim(post_data('password2'));
 			
             <div class="main">
 							<div class="form-block center-block p-30 light-gray-bg border-clear">
-                             <?php
-									if(isset($status)){
-										echo "<p class='text-center text-uppercase' style='color:red'>{$status}</p>";
-									}
-									else if(isset($msg)){
-										echo "<p class='text-center text-uppercase' style='color:green'>{$msg}</p>";
-									}
-									else{
-										echo "";
-									}
-				                ?>
-								<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> " method="post" class="form-horizontal">
+									<?php if(isset($status)) : ?>
+										<p class='text-center text-uppercase' style='color:red'><?php echo $status; ?></p>
+
+									<?php elseif(isset($msg)) : ?>
+										<p class='text-center text-uppercase' style='color:green'><?php echo $msg; ?></p>
+									
+									<?php else : ?>
+										
+									<?php endif; ?> 
+								<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> " method="post" id="profile-form" class="form-horizontal">
 									<?php if (isset($results['user_id'])): ?>
 									 <div class="form-group has-feedback">
 									 	<input type="hidden" name="id" value="<?php echo $results['user_id'] ?>">
@@ -164,7 +174,7 @@ $password2 = trim(post_data('password2'));
 									</div>
                                     	<div class="form-group has-feedback">
 										<div class="col-sm-8">
-											<input type="password" class="form-control" name="password"  required placeholder="password">
+											<input type="password" class="form-control" id="password" name="password"  required placeholder="password">
 											<i class="fa fa-lock form-control-feedback"></i>
 											<span id="pswd_status"></span>
 											<div class="invalid-feedback">
@@ -175,7 +185,7 @@ $password2 = trim(post_data('password2'));
 									</div>
 									<div class="form-group has-feedback">
 										<div class="col-sm-8">
-											<input type="password" class="form-control" name="password2" placeholder="Confirm Password" required>
+											<input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm Password" required>
 											<i class="fa fa-lock form-control-feedback"></i>
 											<div class="invalid-feedback">
 											
@@ -186,8 +196,8 @@ $password2 = trim(post_data('password2'));
 									 <?php else: ?>
 								    <div class="form-group has-feedback">
 										<div class="col-sm-8">
-											<select name="role"  class="form-control">
-							                    <option value="PLEASE SELECT ROLE">Select role</option>
+											<select name="role"  id="role" class="form-control">
+							                    <option value="">Select role</option>
 							                    <option value="Admin">Admin</option>
 							                    <option value="Counselor">Counselor</option>
 							                    <option value="Pastorate">Pastorate</option>
@@ -201,7 +211,7 @@ $password2 = trim(post_data('password2'));
 
 									<div class="form-group has-feedback">
 										<div class="col-sm-8">
-											<input type="text" class="form-control"  name="phone_no"  placeholder="Phone Number" value="" required>
+											<input type="text" class="form-control"  name="phone_no" id="phone_no" placeholder="Phone Number" value="" required>
 											<i class="fa fa-user form-control-feedback"></i>
              								<span id="name_status"></span>
              								<div class="invalid-feedback">
@@ -215,9 +225,9 @@ $password2 = trim(post_data('password2'));
 									<div class="form-group">
 										<div class="col-sm-offset-3 col-sm-8">
 									            <?php if (isset($results['user_id'])): ?>
-									                <button type="submit" name="update_user"class="btn btn-group btn-default btn-animated">Update</button>
+									                <button type="submit" name="update_user"class="btn btn-group btn-default btn-animated">Update <i class="fa fa-check"></i></button>
 									            <?php else: ?>
-									               <button type="submit" name="search_user" class="btn btn-group btn-default btn-animated">Search</button>
+									               <button type="submit" name="search_user" class="btn btn-group btn-default btn-animated">Search <i class="fa fa-search"></i></button>
 									            <?php endif ?>	
                                        
 										</div>

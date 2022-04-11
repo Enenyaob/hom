@@ -13,7 +13,7 @@ require_once("php/secure.php");
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>RCCG Hom Ejigbo | Admin</title>
+	<title>Admin</title>
 	<?php include("php/meta.php"); ?>
 	<?php include("php/links.php"); ?>
 	<!-- Custom css --> 
@@ -51,7 +51,7 @@ require_once("php/secure.php");
 			<section class="pv-30 light-gray-bg clearfix">
 				<div class="container">
 					<?php if (isset($_GET["inserted"])) : ?>
-					<?php echo "<p class='text-center text-uppercase' style='color:green'>Record inserted succesfully</p>"; ?>
+						<p class='text-center text-uppercase' style='color:green'>Record inserted succesfully</p>
 					<?php else: ?>
 						<h3 class="title logo-font text-center ">Welcome 
                     	<b class="text-danger"><?php echo  ucfirst($_SESSION['MM_Username']) ; ?></b></h3>

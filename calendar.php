@@ -44,7 +44,7 @@ foreach($result as $row){
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
      
-        <title>RCCG Hom Ejigbo | Calender</title>
+        <title>Pastorate | Calender</title>
         <link rel="stylesheet" href="timeline/css/timeline.min.css" />
     <?php include("php/meta.php"); ?>
     <script src="timeline/js/jquery.js"></script>

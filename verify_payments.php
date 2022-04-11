@@ -99,16 +99,15 @@ require_once("php/secure.php");
 				</nav>
                 </div>
                <div class="col-md-9">
-                             <?php
-									if(isset($status)){
-										echo "<p class='text-center text-uppercase' style='color:red'>{$status}</p>";
-									// }
-									// else if(isset($msg)){
-									// 	echo "<p class='text-center text-uppercase' style='color:green'>{$msg}</p>";
-									}
-									else{
-									}
-				                ?>
+			   					<?php if(isset($status)) : ?>
+										<p class='text-center text-uppercase' style='color:red'><?php echo $status; ?></p>
+
+									<?php elseif(isset($msg)) : ?>
+										<p class='text-center text-uppercase' style='color:green'><?php echo $msg; ?></p>
+									
+									<?php else : ?>
+										
+								<?php endif; ?> 
 					<!-- <?php if(isset($results)) :?>
 							<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">					
 				<button type="submit" id="export_csv_data" name='export_csv_data' value="Export to CSV" class="btn btn-info">Export to CSV</button>

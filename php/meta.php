@@ -1,7 +1,5 @@
  <meta name="author" content="">  
-		 <meta name="Webmaster" content="Obinna, 07037208799" />
-         <meta name="description" content="Rccg House of Mercy" />
-		<meta name="keywords" content="The Redeemed Christian Church of God, Pastor, Adeboye, Church,  mercy, Proskuneo, rccg, nigeria, house of mercy, Lagos, Ejigbo" />
+		 <meta name="Webmaster" content="Obinna, +2347037208799" />
         	<!-- Mobile Meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 

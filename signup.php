@@ -33,12 +33,12 @@ require_once ('php/includes/user_navigation.php');
 	$errors = validateFirst($first_name, $errors);
 	$errors= validateLast($last_name, $errors);
 	$errors = validateMiddle($middle_name, $errors);
-	$errors = validateSelect($gender, $errors);
+	$errors = validateGender($gender, $errors);
 	$errors = validateDob($dob, $errors);
 	$errors = validateAddress($home_address, $errors);
 	$errors = validateEmail($email, $errors);
 	$errors = validatePhone($phone_no, $errors);
-	$errors = validateSelect($department, $errors);	
+	$errors = validateDeparment($department, $errors);	
 	$errors= validateLast($last_name, $errors);
    
 	
@@ -126,18 +126,16 @@ $results = $connection->checkWorkers($first_name, $email, $phone_no);
 						<div class="main object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="100">
 							<div class="form-block center-block p-30 light-gray-bg border-clear">
 								<h2 class="title text-center">Register Worker</h2>
-								<?php
-									if(isset($status)){
-										echo "<p class='text-center text-uppercase' style='color:red'>{$status}</p>";
-									}
-									else if(isset($msg)){
-										echo "<p class='text-center text-uppercase' style='color:green'>{$msg}</p>";
-									}
-									else{
-										echo "";
-									}
-								?>
-								<form action="" method="post" class="form-horizontal" role="form">
+								<?php if(isset($status)) : ?>
+										<p class='text-center text-uppercase' style='color:red'><?php echo $status; ?></p>
+
+									<?php elseif(isset($msg)) : ?>
+										<p class='text-center text-uppercase' style='color:green'><?php echo $msg; ?></p>
+									
+									<?php else : ?>
+										
+									<?php endif; ?> 
+								<form action="" method="post" class="form-horizontal" id="data-form" role="form">
 									
 									<div class="form-group has-feedback">
 										<label for="first_name" class="col-sm-3 control-label">First Name</label>
@@ -187,12 +185,12 @@ $results = $connection->checkWorkers($first_name, $email, $phone_no);
 										<label for="gender" class="col-sm-3 control-label">Gender</label>
 										<div class="col-sm-8">
 											<select name="gender" id="gender" class="form-control">
-												<?php if (isset($gender)) :?>
+											<?php if (strlen($gender) > 0): ?>
 
-																	<option value="<?php echo $gender; ?>"><?php echo $gender; ?></option>
-												<?php else : ?>
-							                    <option value="PLEASE SELECT GENDER">Select gender</option>
-							          <?php endif; ?>
+												<option value="<?php echo $gender; ?>"><?php echo $gender; ?></option>
+											<?php else : ?>
+							                    <option value="">Select gender</option>
+							          		<?php endif; ?>
 							                    <option value="Male">Male</option>
 							                    <option value="Female">Female</option>
 											</select>
@@ -206,7 +204,7 @@ $results = $connection->checkWorkers($first_name, $email, $phone_no);
 									<div class="form-group has-feedback">
 										<label for="dob" class="col-sm-3 control-label">Dob</label>
 										<div class="col-sm-8">
-											<input type="date" class="form-control" id="dob" name="dob" value="<?php echo $dob ?>"placeholder="dd-mm-yyyy" value="" min="1950-01-01" max="">
+											<input type="date" class="form-control" id="dob" name="dob" value="<?php echo $dob ?>"placeholder="dd-mm-yyyy" value="" min="1940-01-01" >
 											<div class="invalid-feedback">
 												<span class="text-danger small"><?php echo $errors['dob'] ?? ''?></span>
 											</div>
@@ -217,10 +215,10 @@ $results = $connection->checkWorkers($first_name, $email, $phone_no);
 										<label for="department" class="col-sm-3 control-label">Department</label>
                                     	<div class="col-sm-8">
 											<select name="department" id="department" class="form-control">
-												<?php if (isset($department)) :?> 
+												<?php if (strlen($department) > 0) :?> 
 							                    <option value="<?php echo $department; ?>"><?php echo $department; ?></option>
 							          <?php else : ?>
-							          					<option value="PLEASE SELECT DEPARTMENT">Select Department</option>
+							          					<option value="">Select Department</option>
 							          <?php endif ; ?>
 							                    <option value="Ushering">Ushering</option> 
 							                    <option value="Choir">Choir</option>
@@ -249,14 +247,14 @@ $results = $connection->checkWorkers($first_name, $email, $phone_no);
                                     	<label for="home_address" class="col-sm-3 control-label">Address</label>
                                 		<div class="col-sm-8">
                                         	<textarea class="form-control" rows="3" id="home_address" name="home_address" 
-                                        	  placeholder="Address" required></textarea>
+                                        	  placeholder="Address"></textarea>
 											<i class="fa fa-pencil form-control-feedback"></i>
 											<div class="invalid-feedback">
-											
 											 <span class="text-danger small"><?php echo $errors['home_address'] ?? ''?></span>
 											</div>
 										</div>
 									</div>
+									
 									<div class="form-group">
 										<div class="col-sm-offset-3 col-sm-8">
 											<button type="submit" name="submit_staff" class="btn btn-group btn-default btn-animated">Submit <i class="fa fa-check"></i></button>

@@ -85,17 +85,15 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
 						<div class="main object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="100">
 							<div class="form-block center-block p-30 light-gray-bg border-clear">
 								<h2 class="title text-center">Prayer Request</h2>
-								<?php
-									if(isset($status)){
-										echo "<p class='text-center text-uppercase' style='color:red'>{$status}</p>";
-									}
-									else if(isset($msg)){
-										echo "<p class='text-center text-uppercase' style='color:green'>{$msg}</p>";
-									}
-									else{
-										echo "";
-									}
-								?>
+								<?php if(isset($status)) : ?>
+										<p class='text-center text-uppercase' style='color:red'><?php echo $status; ?></p>
+
+									<?php elseif(isset($msg)) : ?>
+										<p class='text-center text-uppercase' style='color:green'><?php echo $msg; ?></p>
+									
+									<?php else : ?>
+										
+									<?php endif; ?> 
 								<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="form-horizontal" role="form" >
 									<div class="form-group has-feedback">
 										<label for="first_name" class="col-sm-3 control-label">First Name</label>

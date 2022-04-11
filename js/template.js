@@ -1334,45 +1334,34 @@
 			});
 		};
 
-		// Contact forms validation
-		//-----------------------------------------------
-		if($("#contact-form").length>0) {
-			$("#contact-form").validate({
-				submitHandler: function(form) {
-					$('.submit-button').button("loading");
-					$.ajax({
-						type: "POST",
-						url: "php/email-sender.php",
-						data: {
-							"name": $("#contact-form #name").val(),
-							"email": $("#contact-form #email").val(),
-							"subject": $("#contact-form #subject").val(),
-							"message": $("#contact-form #message").val()
-						},
-						dataType: "json",
-						success: function (data) {
-							if (data.sent == "yes") {
-								$("#MessageSent").removeClass("hidden");
-								$("#MessageNotSent").addClass("hidden");
-								$(".submit-button").removeClass("btn-default").addClass("btn-success").prop('value', 'Message Sent');
-								$("#contact-form .form-control").each(function() {
-									$(this).prop('value', '').parent().removeClass("has-success").removeClass("has-error");
-								});
-							} else {
-								$("#MessageNotSent").removeClass("hidden");
-								$("#MessageSent").addClass("hidden");
-							}
-						}
-					});
-				},
-				// debug: true,
+		// sign up workers
+		if($("#profile-form").length>0) {
+			$("#profile-form").validate({
+				
+				//debug: true,
 				errorPlacement: function(error, element) {
 					error.insertBefore( element );
 				},
 				onkeyup: false,
 				onclick: false,
 				rules: {
-					name: {
+					user_name: {
+						required: true,
+						minlength: 6
+					},
+					password: {
+						required: true,
+						minlength: 6
+					},
+					password2: {
+						required: true,
+						minlength: 6
+					},
+					first_name: {
+						required: true,
+						minlength: 2
+					},
+					last_name: {
 						required: true,
 						minlength: 2
 					},
@@ -1380,29 +1369,209 @@
 						required: true,
 						email: true
 					},
-					subject: {
+					gender: {
 						required: true
 					},
-					message: {
+					dob: {
+						required: true
+					},
+					department: {
+						required: true
+					},
+					role: {
+						required: true
+					},
+					phone_no: {
+						required: true,
+						minlength: 11
+					},
+					home_address: {
 						required: true,
 						minlength: 10
 					}
 				},
 				messages: {
-					name: {
+					first_name: {
+						required: "Please specify your name",
+						minlength: "Your name must be longer than 2 characters"
+					},
+					last_name: {
 						required: "Please specify your name",
 						minlength: "Your name must be longer than 2 characters"
 					},
 					email: {
-						required: "We need your email address to contact you",
+						required: "Enter email",
 						email: "Please enter a valid email address e.g. name@domain.com"
 					},
-					subject: {
-						required: "Please enter a subject"
+					gender:{
+						required: "Please select a gender"
 					},
-					message: {
+					dob:{
+						required: "Enter date of birth"
+					},
+					department:{
+						required: "Please select a department"
+					},
+					phone_no: {
+						required: "Please enter a phone number",
+						minlength: "Enter a valid phone number"
+					},
+					home_address: {
 						required: "Please enter a message",
 						minlength: "Your message must be longer than 10 characters"
+					}
+				},
+				errorElement: "span",
+				highlight: function (element) {
+					$(element).parent().removeClass("has-success").addClass("has-error");
+					$(element).siblings("label").addClass("hide");
+				},
+				success: function (element) {
+					$(element).parent().removeClass("has-error").addClass("has-success");
+					$(element).siblings("label").removeClass("hide");
+				}
+			});
+		};
+
+		
+		// Inner validation
+		// -----------------------------------------------
+		if($("#data-form").length>0) {
+			$("#data-form").validate({
+				
+				//debug: true,
+				errorPlacement: function(error, element) {
+					error.insertBefore( element );
+				},
+				onkeyup: false,
+				onclick: false,
+				rules: {
+					first_name: {
+						required: true,
+						minlength: 2
+					},
+					last_name: {
+						required: true,
+						minlength: 2
+					},
+					age_group: {
+						required: true
+
+					},
+					gender: {
+						required: true,
+					},
+					home_address: {
+						required: true,
+						minlength: 10
+					},
+					email: {
+						required: true,
+						email: true
+					},
+					phone_no: {
+						required: true,
+						minlength: 11
+					},
+					department: {
+						required: true
+					},
+					dob: {
+						required: true,
+					},
+					event: {
+						required: true,
+					},
+					role: {
+						required: true
+					}
+
+				},
+				messages: {
+					first_name: {
+						required: "Please specify your name",
+						minlength: "Your name must be longer than 2 characters"
+					},
+					last_name: {
+						required: "Please specify your name",
+						minlength: "Your name must be longer than 2 characters"
+					},
+					age_group:{
+						required: "Please select an age group",
+					},
+					gender:{
+						required: "Please select a gender",
+					},
+					home_address: {
+						required: "Please enter a message",
+						minlength: "Your message must be longer than 10 characters"
+					},
+					email: {
+						required: "Enter email",
+						email: "Please enter a valid email address e.g. name@domain.com"
+					},
+					phone_no: {
+						required: "Please enter a phone number",
+						minlength: "Enter a valid phone number"
+					},
+					dob:{
+						required: "Enter date of birth",
+					},
+					department:{
+						required: "Please select a department",
+					},
+					event:{
+						required: "Enter an event",
+					},
+					role:{
+						required: "Please select a role"
+					}
+
+				},
+				errorElement: "span",
+				highlight: function (element) {
+					$(element).parent().removeClass("has-success").addClass("has-error");
+					$(element).siblings("label").addClass("hide");
+				},
+				success: function (element) {
+					$(element).parent().removeClass("has-error").addClass("has-success");
+					$(element).siblings("label").removeClass("hide");
+				}
+			});
+		};
+
+		 		// Portal forms validation
+		// -----------------------------------------------
+		if($("#portal-form").length>0) {
+			$("#portal-form").validate({
+				// debug: true,
+				errorPlacement: function(error, element) {
+					error.insertBefore( element );
+				},
+				onkeyup: false,
+				onclick: false,
+				rules: {
+					user_name: {
+						required: true,
+						minlength: 6
+					},
+					password: {
+						required: true,
+					},
+					role: {
+						required: true
+					}
+				},
+				messages: {
+					user_name: {
+						required: "Please enter user name ",
+						minlength: "Enter a valid user name"
+					},
+					password: {
+						required: "You Must Enter Password",
+					},
+					role:{
+						required: "Please select an option"
 					}
 				},
 				errorElement: "span",
