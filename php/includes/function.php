@@ -8,18 +8,6 @@ function post_data($field){
 	return htmlspecialchars(stripcslashes($_POST[$field]));
 }
 
-// function validate($data_set){
-// 		$data_set = htmlspecialchars(trim($data_set));
-
-// 			$data_set = strtoupper($data_set);
-		
-//         return $data_set;
-// 	}
-
-// 	function validateInt($data_set){
-// 		$data_set = trim($data_set);
-// 		return $data_set;
-	//}
 function validateUsername($data, $errors){
 	if(!$data){
 		$errors['user_name'] = REQUIRED_FIELD_ERROR;
@@ -39,7 +27,7 @@ function validatePassword($data, $errors){
 		$errors['password'] = REQUIRED_FIELD_ERROR;
 	}
 	elseif(!preg_match('/^[a-zA-Z0-9]{6,12}$/', $data)){
-		$errors['password'] = "password must be 6-12 characters & alphanumeric";
+		$errors['password'] = "Invalid password entered";
 	}
 	if(isset($errors)){
 	   return $errors;
@@ -105,14 +93,43 @@ function validateMiddle($middle_name, $errors){
 		}
 }
 
-function validateSelect($data, $errors){
-	if($data == "PLEASE SELECT GENDER"){
-			$errors['gender'] = REQUIRED_FIELD_ERROR;
-		}elseif($data == "PLEASE SELECT GROUP"){
-			$errors['age_group'] = REQUIRED_FIELD_ERROR;
-		}elseif($data == "PLEASE SELECT ROLE"){
+function validateRole($data, $errors){
+	if(strlen($data) == 0){
 			$errors['role'] = REQUIRED_FIELD_ERROR;
-		}elseif($data == "PLEASE SELECT DEPARTMENT"){
+		}
+		if(isset($errors)){
+			return $errors;
+		}
+		else{
+	 
+		}
+}
+
+function validateAgegroup($data, $errors){
+	if(strlen($data) == 0){
+			$errors['age_group'] = REQUIRED_FIELD_ERROR;
+		}
+		if(isset($errors)){
+			return $errors;
+		}
+		else{
+	 
+		}
+}
+
+function validateGender($data, $errors){
+	if(strlen($data) == 0){
+			$errors['gender'] = REQUIRED_FIELD_ERROR;
+		}
+		if(isset($errors)){
+			return $errors;
+		}
+		else{
+	 
+		}
+}
+function validateDeparment($data, $errors){
+	if(strlen($data) == 0){
 			$errors['department'] = REQUIRED_FIELD_ERROR;
 		}
 		if(isset($errors)){
@@ -122,6 +139,7 @@ function validateSelect($data, $errors){
 	 
 		}
 }
+
 function validateAddress($data, $errors){
 	if(!$data){
 			$errors['home_address'] = REQUIRED_FIELD_ERROR;
