@@ -7,8 +7,8 @@ require_once("php/secure.php");
  
 $requests = $connection->getRequests();
 if(count($requests) > 0 ){
- 			$msg = 'Record found';
- 		}elseif(count($requests) == 0){
+	$msg = 'Record found';
+}elseif(count($requests) == 0){
 	$status ='No Record found';
  		}
 
@@ -19,9 +19,6 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
     header('Location: prayer_requests');
     exit;
 }
-
-
-
 ?>
 
 
@@ -83,7 +80,6 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
 
 									foreach ($item as $key => $value) {
 									    if ( $current_page == $key ) {
-									    	//<li class="active"><a href="contact.php">Contact</a></li>
 									         echo '<li class="active"><a href="' . $key . '">' . $value . '</a></li>';
 									    }
 									    else {
@@ -99,17 +95,15 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
                <div class="col-md-9">
                	<div class="main">
 					<h3 class="title  text-default"><b>Prayer Requests</b></h3>
-					<?php
-									if(isset($status)){
-										echo "<p class='text-center text-uppercase' style='color:red'>{$status}</p>";
-									}
-									else if(isset($msg)){
-										echo "<p class='text-center text-uppercase' style='color:green'>{$msg}</p>";
-									}
-									else{
-										echo "";
-									}
-				                ?>
+									<?php if(isset($status)) : ?>
+										<p class='text-center text-uppercase' style='color:red'><?php echo $status; ?></p>
+
+									<?php elseif(isset($msg)) : ?>
+										<p class='text-center text-uppercase' style='color:green'></p>
+									
+									<?php else : ?>
+										
+									<?php endif; ?> 	
 				</div>
                     
 					<div class="separator"></div>
@@ -125,7 +119,6 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
                 </div>
                 <small><?php echo date('d/m/Y H:i', strtotime($request['create_date'])) ?></small>
                 <form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> " method="post" class="form-horizontal">
-                <!--<form action="delete.php" method="post">-->
                     <input type="hidden" name="i_d" value="<?php echo $request['id'] ?>">
                     <button class="close">X</button>
                 </form>
@@ -134,23 +127,16 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
     </div>
 
 
-					<br>
-                    </div>
+			<br>
+             </div>
 			</div>
-						</div>
+			</div>
 
 		
 					
 			</section>
 			<!-- section end -->
-
-			
-
-
-
-
-
-			
+	
 		<?php include('php/includes/layouts/footer_admin.php'); ?>
 		</div>
 		<!-- page-wrapper end -->
