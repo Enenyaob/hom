@@ -17,9 +17,9 @@ class Connection
 
 
 
-    public function addFirst_timer($first_name, $last_name, $middle_name, $age_group, $gender, $home_address, $email, $phone_no, $date)
+    public function addmembers($first_name, $last_name, $middle_name, $age_group, $gender, $home_address, $email, $phone_no, $date)
     {
-        $statement = $this->pdo->prepare( "INSERT INTO first_timer (first_name, last_name, middle_name, age_group, gender, home_address, email, phone_no, create_date) VALUES (:first_name, :last_name, :middle_name, :age_group, :gender, :home_address, :email, :phone_no, :create_date)");
+        $statement = $this->pdo->prepare( "INSERT INTO members (first_name, last_name, middle_name, age_group, gender, home_address, email, phone_no, create_date) VALUES (:first_name, :last_name, :middle_name, :age_group, :gender, :home_address, :email, :phone_no, :create_date)");
         $statement->bindValue('first_name', $first_name);
         $statement->bindValue('last_name', $last_name);
         $statement->bindValue('middle_name', $middle_name);
@@ -32,9 +32,22 @@ class Connection
         return $statement->execute();
     }
 
-    public function getFirst_timer($key)
+    public function numCount($key1)
     {
-        $statement = $this->pdo->prepare("SELECT first_name, last_name, gender, age_group, phone_no, home_address FROM first_timer WHERE first_name = :first_name  OR last_name = :last_name" );
+        $statement = $this->pdo->prepare("SELECT id FROM $key1" );
+        $statement->execute();
+        return $statement->fetchALL(PDO::FETCH_ASSOC);
+    }
+
+    public function allMember($key)
+    {
+        $statement = $this->pdo->prepare("SELECT id, first_name, last_name, age_group, gender, home_address, email, phone_no, create_date FROM members ORDER BY id ASC $key" );
+        $statement->execute();
+        return $statement->fetchALL(PDO::FETCH_ASSOC);
+    }
+    public function getMember($key)
+    {
+        $statement = $this->pdo->prepare("SELECT id, first_name, last_name, gender, age_group, phone_no,email, home_address FROM members WHERE first_name = :first_name  OR last_name = :last_name" );
         $statement->bindValue('first_name', $key);
         $statement->bindValue('last_name', $key);
         $statement->execute();
@@ -190,7 +203,7 @@ class Connection
 
      public function checkMember($first_name, $email, $phone_no)
     {
-        $statement = $this->pdo->prepare("SELECT first_name, email, phone_no FROM first_timer WHERE first_name =:first_name AND email =:email AND phone_no =:phone_no");
+        $statement = $this->pdo->prepare("SELECT first_name, email, phone_no FROM members WHERE first_name =:first_name AND email =:email AND phone_no =:phone_no");
         $statement->bindValue("first_name", $first_name);
         $statement->bindValue("email", $email);
         $statement->bindValue("phone_no", $phone_no);
