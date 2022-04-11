@@ -83,10 +83,10 @@ require_once("php/secure.php");
 						<div class="col-md-4 ">
 							<div class="pv-30 ph-20 feature-box bordered shadow text-center object-non-visible" data-animation-effect="fadeInDownSmall" data-effect-delay="100">
 								<span class="icon default-bg circle"><i class="fa fa-archive"></i></span>
-								<h3>View First Timer</h3>
+								<h3>View All Members</h3>
 								<div class="separator clearfix"></div>
 								
-								<a href="first_timer_view">Go Here <i class="pl-5 fa fa-angle-double-right"></i></a>
+								<a href="view_all_members">Go Here <i class="pl-5 fa fa-angle-double-right"></i></a>
 							</div>
 						</div>
                         <div class="col-md-4 ">
@@ -123,10 +123,10 @@ require_once("php/secure.php");
 						<div class="col-md-4 ">
 							<div class="pv-30 ph-20 feature-box bordered shadow text-center object-non-visible" data-animation-effect="fadeInDownSmall" data-effect-delay="200">
 								<span class="icon default-bg circle"><i class="fa fa-sitemap"></i></span>
-								<h3>Calender</h3>
+								<h3>Calendar</h3>
 								<div class="separator clearfix"></div>
 								
-								<a href="calender">Go Here <i class="pl-5 fa fa-angle-double-right"></i></a>
+								<a href="calendar">Go Here <i class="pl-5 fa fa-angle-double-right"></i></a>
 							</div>
 						</div>
                         
