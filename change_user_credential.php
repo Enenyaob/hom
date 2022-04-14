@@ -73,7 +73,7 @@ $password2 = trim(post_data('password2'));
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>RCCG Hom Ejigbo | Blank page</title>
+		<title>Portal | Change User Credential</title>
 		<?php include("php/meta.php"); ?>
         <?php include("php/links.php"); ?>
 
@@ -135,10 +135,19 @@ $password2 = trim(post_data('password2'));
 						</div>
                   	<div class="collapse navbar-collapse" id="navbar-collapse-1">
                  <ul class="nav nav-pills nav-stacked">
-  <li ><a href="Admin.php">Dash board</a></li>
-  <li><a href="edit_user">Back</a></li>
-  <li class="active"><a href="change_user_credential">Update Credentials</a></li>
-</ul>
+				 <?php 
+
+					foreach ($item as $key => $value) {
+						if ( $current_page == $key ) {
+							echo '<li class="active"><a href="' . $key . '">' . $value . '</a></li>';
+						}
+						else {
+							echo '<li><a href="' . $key . '">' . $value . '</a></li>';
+						}
+					}
+
+?>
+			</ul>
 						</div>
 					</div>
 				</nav>

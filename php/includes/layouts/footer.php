@@ -1,11 +1,16 @@
-			<!-- footer top start -->
+<?php 
+if (isset($_GET["mailsend"])){
+	echo "<script>alert('Message sent!')</script>";
+}
+?>
+<!-- footer top start -->
 			<!-- ================ -->
 		
 			<!-- footer top end -->
 
 			<!-- footer start (Add "dark" class to #footer in order to enable dark footer) -->
 			<!-- ================ -->
-			<footer id="footer" class="clearfix ">
+			<footer id="footer" class="clearfix dark ">
 
 				<!-- .footer start -->
 				<!-- ================ -->
@@ -15,29 +20,24 @@
 							<div class="row">
 								<div class="col-md-8">
 									<div class="footer-content">
-										<div class="logo-footer"><img id="logo-footer" src="images/rccg.png" alt="lifeline"></div>
+										<div class="logo-footer"><img id="logo-footer" src="images/ccg.png" alt=""></div>
 										<div class="row">
 											<div class="col-md-6">
 											
 												<ul class="social-links circle animated-effect-1">
-													<li class="facebook"><a target="_blank" href="http://www.facebook.com/HOMEJIGBO"><i class="fa fa-facebook"></i></a></li>
-													<li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
-													<li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
-													<li class="linkedin"><a target="_blank" href="http://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li>
-												
-													<li class="skype"><a target="_blank" href="http://www.skype.com"><i class="fa fa-skype"></i></a></li>
-													
+													<li class="facebook"><a target="_blank" href="http://www.facebook.com/enenya.obinna"><i class="fa fa-facebook"></i></a></li>
+													<li class="twitter"><a target="_blank" href="http://www.twitter.com/Obinna05431772"><i class="fa fa-twitter"></i></a></li>
+													<li class="googleplus"><a target="_blank" href="http://instagram.com/swinginge/"><i class="fa fa-instagram"></i></a></li>
+													<li class="linkedin"><a target="_blank" href="http://www.linkedin.com/in/enenya-obinna"><i class="fa fa-linkedin"></i></a></li>
 												</ul>
 												<ul class="list-icons">
 													
-													<li><a href="tel:+2347037208799"><i class="fa fa-phone pr-10 text-default"></i>(+234) 703-720-8799</a></li>
-													<li><a href="mailto:info@theproject.com"><i class="fa fa-envelope-o pr-10"></i>enenyaobinna@gmail.com</a></li>
+													<li><a href="tel:+2347037208799"><i class="fa fa-phone pr-10 text-default"></i>(+234) 700-000-0000</a></li>
                                                     <li><a href="portal"><i class="fa fa-lock pr-10"></i>Workers Portal</a></li>
 												</ul>
 											</div>
 											<div class="col-md-6">
-												<div class="mapouter"><div class="gmap_canvas"><iframe width="320" height="250" id="gmap_canvas" src="https://maps.google.com/maps?q=The%20Redeemed%20Christian%20Church%20Of%20God%20House%20Of%20Mercy,%20Babatunde%20Allen%20St,%20Isheri%20Osun,%20Lagos&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://youtube-embed-code.com"></a><br><style>.mapouter{position:relative;text-align:right;height:250px;width:320px;}</style><a href="https://google-map-generator.com">map generator</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:250px;width:320px;}</style></div></div>
-
+												<div class="mapouter"><div class="gmap_canvas"><iframe width="320" height="250" id="gmap_canvas" src="https://maps.google.com/maps?q=baracuda%20beach&t=&z=13&ie=UTF8&iwloc=&output=embed " frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://youtube-embed-code.com"></a><br><style>.mapouter{position:relative;text-align:right;height:250px;width:320px;}</style><a href="https://google-map-generator.com">map generator</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:250px;width:320px;}</style></div></div>
 											</div>
 										</div>
 									</div>
@@ -52,7 +52,8 @@
 										<div class="alert alert-danger hidden" id="MessageNotSent2">
 											Oops! Something went wrong please refresh the page and try again.
 										</div>
-										<form role="form" id="footer-form" class="margin-clear">
+										<form action="<?php echo htmlspecialchars('php/contactForm.php');?>
+										" method="post" role="footer-form" id="footer-form" class="margin-clear">
 											<div class="form-group has-feedback">
 												<label class="sr-only" for="name2">Name</label>
 												<input type="text" class="form-control" id="name2" placeholder="Name" name="name2">
@@ -68,7 +69,7 @@
 											<div class="form-group has-feedback">
 												<label class="sr-only" for="subject2">Subject</label>
 												<input type="text" class="form-control" id="subject2" placeholder="Subject" name="subject2">
-												<i class="fa fa-user form-control-feedback"></i>
+												<i class="fa fa-book form-control-feedback"></i>
 											</div>
 
 											<div class="form-group has-feedback">
@@ -76,8 +77,9 @@
 												<textarea class="form-control" rows="6" id="message2" placeholder="Message" name="message2"></textarea>
 												<i class="fa fa-pencil form-control-feedback"></i>
 											</div>
-											<input type="submit" value="Send" class="margin-clear submit-button btn btn-default">
-										</form>
+											
+													<input type="submit" value="Send" class="margin-clear submit-button btn btn-default">
+												</form>
 									</div>
 								</div>
 							</div>

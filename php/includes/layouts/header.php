@@ -18,16 +18,16 @@
 										<li class="skype"><a target="_blank" href="http://www.skype.com"><i class="fa fa-skype"></i></a></li>
 										<li class="linkedin"><a target="_blank" href="http://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li>
 																			
-										<li class="facebook"><a target="_blank" href="https://www.facebook.com/HOMEJIGBO"><i class="fa fa-facebook"></i></a></li>
+										<li class="facebook"><a target="_blank" href="https://www.facebook.com/enenya.obinna"><i class="fa fa-facebook"></i></a></li>
 										
 									</ul>
 									<div class="social-links hidden-lg hidden-md hidden-sm circle small">
 										<div class="btn-group dropdown">
 											<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-share-alt"></i></button>
 											<ul class="dropdown-menu dropdown-animation">
-												<li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
-												<li class="skype"><a target="_blank" href="http://www.skype.com"><i class="fa fa-skype"></i></a></li>
-												<li class="linkedin"><a target="_blank" href="http://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li>
+												<li class="twitter"><a target="_blank" href="http://www.twitter.com/Obinna05431772"><i class="fa fa-twitter"></i></a></li>
+												<li class="skype"><a target="_blank" href="http://instagram.com/swinginge/"><i class="fa fa-instagram"></i></a></li>
+												<li class="linkedin"><a target="_blank" href="http://www.linkedin.com/in/enenya-obinna"><i class="fa fa-linkedin"></i></a></li>
 											
 												
 												<li class="facebook"><a target="_blank" href="http://www.facebook.com/HOMEJIGBO"><i class="fa fa-facebook"></i></a></li>
@@ -54,7 +54,7 @@
 									<div class="header-top-dropdown text-right">
 										
 										<div class="btn-group dropdown">
-										<?php if(isset($_SESSION)) : ?>
+										<?php if(isset($_SESSION['role'])) : ?>
                                     <a href="<?php echo lcfirst($_SESSION['role']); ?>" class="btn btn-default btn-sm"><i class="fa fa-user"></i><?php echo $_SESSION['role']; ?></a> &nbsp;
 											<a href="signout" class="btn btn-default btn-sm"><i class="fa fa-power-off "></i> Log out</a>
 										<?php else: ?>
@@ -90,7 +90,7 @@
 
 									<!-- logo -->
 									<div id="logo" class="logo">
-										<a href="index"><img id="logo_img" src="images/logo.png" alt="Houseofmercy"></a>
+										<a href="index"><img id="logo_img" src="images/logo.png" alt="demo logo"></a>
 									</div>
 
 									<!-- name-and-slogan -->
@@ -138,7 +138,7 @@
 												<ul class="nav navbar-nav ">
 
 													<!-- mega-menu start -->
-													<li class=" ">
+													<li class="">
 														<a href="index" class="" ><b>Home</b></a>
 														
 													</li>
@@ -154,20 +154,12 @@
 													
 													</li>
 													<!-- mega-menu start -->
-
 													<li class=" ">
-														<a href="gallery" class="" ><b>Gallery</b></a>
-														
-													</li>
-													
-													<li class=" ">
-														<a href="#" class="" ><b>Information</b></a>
+														<a class=" "  href="information"><b>Infomation</b></a>
 													
 													</li>
-
                                                   
 													<!-- mega-menu end -->
-											
 
 												</ul>
 												<!-- main-menu end -->

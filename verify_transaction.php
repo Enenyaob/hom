@@ -18,7 +18,7 @@ if ($ref == "") {
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "GET",
     CURLOPT_HTTPHEADER => array(
-      "Authorization: Bearer sk_live_67fb6ee7d952f310e7085a0056ffb49948e97572",
+      "Authorization: Bearer   ",//Insert paystack Public Secret Key here
       "Cache-Control: no-cache",
     ),
   ));
@@ -45,7 +45,7 @@ if ($ref == "") {
      $date_time = date('m/d/Y h:i:s a', time());
 
      $connection = require_once 'php/db_oop.php';
-     if($connection->verifyPayment($status, $reference, $amount, $fname, $lname, $date_time, $channel, $email)){
+     if($connection->verifyPayment($status, $reference, $amount, $fullname, $date_time, $channel, $email)){
       header("Location: success.php?status=success");
       exit;
      }else{
@@ -55,4 +55,5 @@ if ($ref == "") {
     header("Location: error.html");
     exit;
   }
+  $connection = null;
 ?>

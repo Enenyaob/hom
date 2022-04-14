@@ -13,7 +13,7 @@ require_once("php/secure.php");
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Admin</title>
+	<title>Portal | Admin</title>
 	<?php include("php/meta.php"); ?>
 	<?php include("php/links.php"); ?>
 	<!-- Custom css --> 
@@ -144,20 +144,20 @@ require_once("php/secure.php");
 							</div>
 						</div>
                         
-                        <div class="col-md-4 ">
-							<div class="pv-30 ph-20 feature-box bordered shadow text-center object-non-visible" data-animation-effect="fadeInDownSmall" data-effect-delay="200">
-								<span class="icon default-bg circle"><i class="fa fa-sitemap"></i></span>
-								<h3>Edit Users</h3>
-								<div class="separator clearfix"></div>
-								
-								<a href="edit_user">Go Here <i class="pl-5 fa fa-angle-double-right"></i></a>
-							</div>
-						</div>
 
 						<div class="col-md-4 ">
 							<div class="pv-30 ph-20 feature-box bordered shadow text-center object-non-visible" data-animation-effect="fadeInDownSmall" data-effect-delay="200">
 								<span class="icon default-bg circle"><i class="fa fa-sitemap"></i></span>
-								<h3>Program Scheduler</h3>
+								<h3>Change User Credentials</h3>
+								<div class="separator clearfix"></div>
+								
+								<a href="change_user_credential">Go Here <i class="pl-5 fa fa-angle-double-right"></i></a>
+							</div>
+						</div>
+						<div class="col-md-4 ">
+							<div class="pv-30 ph-20 feature-box bordered shadow text-center object-non-visible" data-animation-effect="fadeInDownSmall" data-effect-delay="200">
+								<span class="icon default-bg circle"><i class="fa fa-sitemap"></i></span>
+								<h3>Blank</h3>
 								<div class="separator clearfix"></div>
 								
 								<a href="#">Go Here <i class="pl-5 fa fa-angle-double-right"></i></a>

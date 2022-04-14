@@ -18,11 +18,10 @@ if (empty($name) || empty($email) || empty($message)){
 
   
   $myMail = "obinnaenenya@gmail.com";
- 
+ var_dump($myMail, $subject, $message2, $header);
 
       if (mail ($myMail, $subject, $message2, $header)) {
          header("Location:../index?mailsend");
-        exit();
     }else{
       echo 'Something went wrong';
        header("Location:../index?error");

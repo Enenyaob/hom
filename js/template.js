@@ -1433,8 +1433,69 @@
 			});
 		};
 
-		
-		// Inner validation
+				//online giving
+		//----------------------------------------------
+		if($("#paymentForm").length>0) {
+			$("#paymentForm").validate({
+				
+				//debug: true,
+				errorPlacement: function(error, element) {
+					error.insertBefore( element );
+				},
+				onkeyup: false,
+				onclick: false,
+				rules: {
+					fname: {
+						required: true,
+						minlength: 2
+					},
+					lname: {
+						required: true,
+						minlength: 2
+					},
+					amount: {
+						required: true,
+						minlength:3
+
+					},
+					email: {
+						required: true,
+						email: true
+					}
+				
+				},
+				messages: {
+					fname: {
+						required: "Please specify your name",
+						minlength: "Your name must be longer than 2 characters"
+					},
+					lname: {
+						required: "Please specify your name",
+						minlength: "Your name must be longer than 2 characters"
+					},
+					amount:{
+						required: "Enter the amount",
+						minlength: "You can't give less than 100 Naira"
+					},
+					email: {
+						required: "Enter email",
+						email: "Please enter a valid email address"
+					}
+
+				},
+				errorElement: "span",
+				highlight: function (element) {
+					$(element).parent().removeClass("has-success").addClass("has-error");
+					$(element).siblings("label").addClass("hide");
+				},
+				success: function (element) {
+					$(element).parent().removeClass("has-error").addClass("has-success");
+					$(element).siblings("label").removeClass("hide");
+				}
+			});
+		};
+
+				// Inner validation
 		// -----------------------------------------------
 		if($("#data-form").length>0) {
 			$("#data-form").validate({
@@ -1588,33 +1649,33 @@
 
 		if($("#footer-form").length>0) {
 			$("#footer-form").validate({
-				submitHandler: function(form) {
-					$('.submit-button').button("loading");
-					$.ajax({
-						type: "POST",
-						url: "php/email-sender.php",
-						data: {
-							"name": $("#footer-form #name2").val(),
-							"email": $("#footer-form #email2").val(),
-							"subject": $("#footer-form #subject2").val(),
-							"message": $("#footer-form #message2").val()
-						},
-						dataType: "json",
-						success: function (data) {
-							if (data.sent == "yes") {
-								$("#MessageSent2").removeClass("hidden");
-								$("#MessageNotSent2").addClass("hidden");
-								$(".submit-button").removeClass("btn-default").addClass("btn-success").prop('value', 'Message Sent');
-								$("#footer-form .form-control").each(function() {
-									$(this).prop('value', '').parent().removeClass("has-success").removeClass("has-error");
-								});
-							} else {
-								$("#MessageNotSent2").removeClass("hidden");
-								$("#MessageSent2").addClass("hidden");
-							}
-						}
-					});
-				},
+				// submitHandler: function(form) {
+					//$('.submit-button').button("loading");
+					// $.ajax({
+					// 	type: "POST",
+					// 	url: "php/contactForm.php",
+					// 	data: {
+					// 		"name": $("#footer-form #name2").val(),
+					// 		"email": $("#footer-form #email2").val(),
+					// 		"subject": $("#footer-form #subject2").val(),
+					// 		"message": $("#footer-form #message2").val()
+					// 	},
+					// 	dataType: "json",
+					// 	success: function (data) {
+					// 		if (data.sent == "yes") {
+					// 			$("#MessageSent2").removeClass("hidden");
+					// 			$("#MessageNotSent2").addClass("hidden");
+					// 			$(".submit-button").removeClass("btn-default").addClass("btn-success").prop('value', 'Message Sent');
+					// 			$("#footer-form .form-control").each(function() {
+					// 				$(this).prop('value', '').parent().removeClass("has-success").removeClass("has-error");
+					// 			});
+					// 		} else {
+					// 			$("#MessageNotSent2").removeClass("hidden");
+					// 			$("#MessageSent2").addClass("hidden");
+					// 		}
+					// 	}
+					// });
+				// },
 				// debug: true,
 				errorPlacement: function(error, element) {
 					error.insertAfter( element );
