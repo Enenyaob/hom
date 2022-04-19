@@ -131,7 +131,7 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
                                         <div class="form-group has-feedback">
 										<label for="user_name" class="col-sm-3 control-label">User Name</label>
 										<div class="col-sm-8">
-											<input type="text" class="form-control" id="user_name" name="user_name" onblur="checkname()" value="<?php echo $result['user_name']; ?>" required>
+											<input type="text" class="form-control" id="user_name" name="user_name" value="<?php echo $result['user_name']; ?>" required>
 											<i class="fa fa-user form-control-feedback"></i>
              								<span id="name_status"></span>
              								<div class="invalid-feedback">
@@ -145,7 +145,7 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
                                     	<div class="form-group has-feedback">
 										<label for="password" class="col-sm-3 control-label">Password</label>
 										<div class="col-sm-8">
-											<input type="password" class="form-control" name="password"  onblur="checkpswd()" required>
+											<input type="password" class="form-control" name="password" required>
 											<i class="fa fa-lock form-control-feedback"></i>
 											<span id="pswd_status"></span>
 											<div class="invalid-feedback">
@@ -302,166 +302,7 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
 		<script type="text/javascript" src="js/template.js"></script>
 		<!-- Custom Scripts -->
 		<script type="text/javascript" src="js/custom.js"></script>
-		<script>
-		   function checkname()
-		    {
-		    
-		       var name=document.getElementById( "user_name" ).value;
-		    
-		       if(name)
-		       {
-		            $.ajax({
-		               type: 'post',
-		               url: 'js/check.php',
-		               data: {
-		               user_name:name,
-		               },
-		               success: function (response) {
-		               $( '#name_status' ).html(response);
-		                  if(response=="Username taken" || response=="Username must be 6-12 characters")    
-		                  {
-		                     return false;   
-		                  }
-		                  else
-		                  {
-		                     return true;  
-		                  }
-		                }
-		              });
-		    
-		       }
-		       else
-		       {
-		           $( '#name_status' ).html("");
-		           return false;
-		       }
-		    }
-
-		    function checkemail()
-		    {
-		    
-		       var email=document.getElementById( "email" ).value;
-		    
-		       if(email)
-		       {
-		           $.ajax({
-		               type: 'post',
-		               url: 'js/check.php',
-		               data: {
-		               email:email,
-		               },
-		               success: function (response) {
-		               $( '#email_status' ).html(response);
-		               if(response=="Valid email id")   
-		               {
-		                  return true;  
-		               }
-		               else
-		               {
-		                  return false; 
-		               }
-		             }
-		           });
-
-
-		        }
-		        else
-		        {
-		           $( '#email_status' ).html("");
-		           return false;
-		        }
-		    
-		    }
-
-		     function checkpswdlen()
-		    {
-		    
-		       var pswd=document.getElementById( "password" ).value;
-		       // var pswd2=document.getElementById( "password2" ).value;
-		    
-		       if(pswd)
-		       {
-		           $.ajax({
-		               type: 'post',
-		               url: 'js/check.php',
-		               data: {
-		               password:pswd,
-		               },
-		               success: function (response) {
-		               $( '#pswd_status' ).html(response);
-		               if(response=="password strength is strong")   
-		               {
-		                  return true;  
-		               }
-		               else
-		               {
-		                  return false; 
-		               }
-		             }
-		           });
-
-		        }
-		        else
-		        {
-		           $( '#pswd_status' ).html("");
-		           return false;
-		        }
-		    }
-
-		    function checkpswd()
-		    {
-		    
-		       var pswd2=document.getElementById( "password" ).value;
-		    
-		       if(pswd2)
-		       {
-		           $.ajax({
-		               type: 'post',
-		               url: 'js/check.php',
-		               data: {
-		               password:pswd2,
-		               },
-		               success: function (response) {
-		               $( '#pswd_status' ).html(response);
-		               if(response=="Password Matched")   
-		               {
-		                  return true;  
-		               }
-		               else
-		               {
-		                  return false; 
-		               }
-		             }
-		           });
-
-
-		        }
-		        else
-		        {
-		           $( '#pswd_status' ).html("");
-		           return false;
-		        }
-		    
-		    }
-
-
-		    function checkall()
-		    {
-		        var namehtml=document.getElementById("name_status").innerHTML;
-		        var emailhtml=document.getElementById("email_status").innerHTML;
-		       //var pswdhtml=document.getElementById("pswd_status").innerHTML;
-		        var pswd2html=document.getElementById("pswd_status").innerHTML;
-		       
-		       if((namehtml == 'Username valid') && (emailhtml=="Valid email id") && (pswdhtml=="password strength is strong") && (pswd2html=="Password Matched"))
-		       {
-		          return true;
-		       }
-		       else
-		       {
-		          return false;
-		       }
-		    }
-		</script>
+		
 
 	</body>
 </html>

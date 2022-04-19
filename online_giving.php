@@ -12,7 +12,7 @@
 	</head>
 
 
-	<body class="no-trans">
+	<body class="no-trans" id="o_giving">
 
 		<!-- scrollToTop -->
 		<!-- ================ -->
