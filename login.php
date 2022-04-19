@@ -1,3 +1,6 @@
+<?php 
+require_once 'php/includes/login.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +13,6 @@
 		<link href="css/custom.css" rel="stylesheet">
 	</head>
 
-
 	<body class="no-trans    ">
 
 		<!-- scrollToTop -->
@@ -21,16 +23,16 @@
 		<!-- ================ -->
 		<div class="page-wrapper">
 		
-		<?php include("php/includes/layouts/header_admin.php"); ?>
+		<?php include("php/includes/layouts/header.php"); ?>
 		
 			<!-- breadcrumb start -->
 			<!-- ================ -->
 			<div class="breadcrumb-container">
 				<div class="container">
 					<ol class="breadcrumb">
-						<li><i class="fa fa-home pr-10"></i><a href="Index">Home</a></li>
+						<li><i class="fa fa-home pr-10"></i><a href="Index">Portal</a></li>
                        
-						<li class="active">Online giving</li>
+						<li class="active">Please Sign In</li>
 					</ol>
 				</div>
 			</div>
@@ -38,57 +40,69 @@
 
 			<!-- main-container start -->
 			<!-- ================ -->
-			<div class="main-container dark-translucent-bg" style="background-image:url('images/pattern-10.png');">
+			<div class="main-container dark-translucent-bg" style="background-image:url('images/pattern-8.png');">
 				<div class="container">
 					<div class="row">
 						<!-- main start -->
 						<!-- ================ -->
 						<div class="main object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="100">
 							<div class="form-block center-block p-30 light-gray-bg border-clear">
-								<h2 class="title text-center">ONLINE GIVING</h2>
-								<form id ="paymentForm" class="form-horizontal" role="paymentForm">
+								<h2 class="title text-center">Sign In</h2>
+								<?php
+									if(isset($status)){
+										echo "<p class='text-center text-uppercase' style='color:red'>{$status}</p>";
+									}
+									else if(isset($msg)){
+										echo "<p class='text-center text-uppercase' style='color:green'>{$msg}</p>";
+									}
+									else{
+										echo "";
+									}
+								?>
+								<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" id ="portal-form" class="form-horizontal" role="form">
                                 	
-                                <div class="form-group has-feedback">
-										<label for="fname" class="col-sm-3 control-label">First Name</label>
+                                	<div class="form-group has-feedback">
+										<label for="user_name" class="col-sm-3 control-label">User Name</label>
 										<div class="col-sm-8">
-											<input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" required> 
+											<input type="text" class="form-control" id="user_name" name="user_name" >
 											<i class="fa fa-user form-control-feedback"></i>
+             								<span id="name_status"></span>
+             								<div class="invalid-feedback"><span class="text-danger small"><?php echo $errors['user_name'] ?? ''?></span>
+											</div>
 										</div>
 									</div>
-									<div class="form-group has-feedback">
-										<label for="lname" class="col-sm-3 control-label">Last Name</label>
+                                     <div class="form-group has-feedback">
+										<label for="password" class="col-sm-3 control-label">Password</label>
 										<div class="col-sm-8">
-											<input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" required>
-											<i class="fa fa-user form-control-feedback"></i>
+											<input type="password" class="form-control" id="password" name="password"  required>
+											<i class="fa fa-lock form-control-feedback"></i>
+											<span id="pswd_status"></span>
+											<div class="invalid-feedback">
+											    <span class="text-danger small"><?php echo $errors['password'] ?? ''?></span>
+											</div>
 										</div>
 									</div>
                                     <div class="form-group has-feedback">
-										<label for="email" class="col-sm-3 control-label">Email</label>
+										<label for="role" class="col-sm-3 control-label">Role</label>
 										<div class="col-sm-8">
-											<input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
-											<i class="fa fa-envelope form-control-feedback"></i>
-                                        </div>
-									</div>
-                                    <div class="form-group has-feedback">
-										<label for="amount" class="col-sm-3 control-label">Amount</label>
-										<div class="col-sm-8">
-											<input type="text" class="form-control" id="amount" name="amount"  placeholder="Amount" required>
-											<i class="fa fa-money form-control-feedback"></i>
+                                        <select name="role" class="form-control" id="role">
+                                            <option value="">Select role</option>
+                                            <option value="Admin">Admin</option>
+                                            <option value="Counselor">Counselor</option>
+                                            <option value="Pastorate">Pastorate</option>
+                                        </select>
+											<div class="invalid-feedback">
+												<span class="text-danger small"><?php echo $errors['role'] ?? ''?></span>
+											</div>
 										</div>
 									</div>
 									
 									<div class="form-group">
 										<div class="col-sm-offset-3 col-sm-8">
-											<button type="submit" class="btn btn-block submit-button  btn-default" onclick="payWithPaystack()">Give<i class="fa fa-check"></i></button>
+											<button type="submit" class="btn btn-group btn-default btn-animated">Submit <i class="fa fa-check"></i></button>
 										</div>
 									</div>
-                                    <div class="form-group">
-                                        <div class="col-sm-offset-3 col-sm-8">
-                                        <img src="images/paystack_image.png">
-                                        </div>
-                                    </div>
 								</form>
-                                <script src="https://js.paystack.co/v1/inline.js"></script>
 							</div>
 						</div>
 						<!-- main end -->
@@ -100,33 +114,6 @@
 <?php include("php/includes/layouts/footer.php"); ?>
 			
 		</div>
-
-        <script>
-	const paymentForm = document.getElementById('paymentForm');
-    paymentForm.addEventListener("submit", payWithPaystack, false);
-    function payWithPaystack(e) {
-    e.preventDefault();
-    let handler = PaystackPop.setup({
-    key: ' ', // Input your PayStack public key
-    email: document.getElementById("email").value,
-    amount: document.getElementById("amount").value * 100,
-    firstname: document.getElementById("fname").value,
-    lastname: document.getElementById("lname").value,
-    ref: 'SW'+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-    // label: "Optional string that replaces customer email"
-    onClose: function(){
-    window.location = "http://localhost/hom/online_giving.php?transaction=cancel"; 
-    alert('Transaction Cancelled.');
-    },
-    callback: function(response){
-    let message = 'Payment complete! Reference: ' + response.reference;
-    alert(message);
-    window.location = "http://localhost/hom/verify_transaction.php?reference=" + response.reference;
-    }
-      });
-    handler.openIframe();
-     }
-		</script> 
 		<!-- page-wrapper end -->
 
 		<!-- JavaScript files placed at the end of the document so the pages load faster -->

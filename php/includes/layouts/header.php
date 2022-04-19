@@ -58,7 +58,7 @@
                                     <a href="<?php echo lcfirst($_SESSION['role']); ?>" class="btn btn-default btn-sm"><i class="fa fa-user"></i><?php echo $_SESSION['role']; ?></a> &nbsp;
 											<a href="signout" class="btn btn-default btn-sm"><i class="fa fa-power-off "></i> Log out</a>
 										<?php else: ?>
-											<a href="portal" class="btn btn-default btn-sm"><i class="fa fa-lock pr-10"></i> Login</a>
+											<a href="login" class="btn btn-default btn-sm"><i class="fa fa-lock pr-10"></i> Login</a>
 										<?php endif; ?>
 											
 										</div>
@@ -150,12 +150,12 @@
 													</li>
 													<!-- mega-menu end -->
 													<li class=" ">
-														<a class=" "  href="Stream_service"><b>Stream Service</b></a>
+														<a class=" "  href="#"><b>Stream Service</b></a>
 													
 													</li>
 													<!-- mega-menu start -->
 													<li class=" ">
-														<a class=" "  href="information"><b>Infomation</b></a>
+														<a class=" "  href="#"><b>Infomation</b></a>
 													
 													</li>
                                                   

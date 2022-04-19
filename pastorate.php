@@ -61,22 +61,7 @@ require_once("php/secure.php");
 					
                         <div class="row">
                         	<div class="col-md-3">
-                        		<ul class="nav nav-pills nav-stacked">
-								  <?php 
-
-									foreach ($item as $key => $value) {
-									    if ( $current_page == $key ) {
-									    	//<li class="active"><a href="contact.php">Contact</a></li>
-									         echo '<li class="active"><a href="' . $key . '">' . $value . '</a></li>';
-									    }
-									    else {
-									    	echo '<li><a href="' . $key . '">' . $value . '</a></li>';
-									    }
-									}
-
-								   ?>
-								  
-								</ul>
+							<?php include("php/includes/layouts/portal_nav.php"); ?>
 						    </div>
                         <div class="col-md-9">
                         <div class="row">

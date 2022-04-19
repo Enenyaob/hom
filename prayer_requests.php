@@ -34,6 +34,16 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
 
 		<!-- Custom css --> 
 		<link href="css/custom.css" rel="stylesheet">
+		<style>
+			.del{
+				border: none;
+				background-color: inherit;
+				padding: 0px 0px;
+				font-size: 16px;
+				cursor: pointer;
+				display: inline-block;
+			}
+		</style>
 	</head>
 
 	
@@ -69,32 +79,16 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
 			<!-- ================ -->
 				<section class="pv-30 light-gray-bg clearfix">
 					<div class="container">
-                    <h3 class="title logo-font text-center ">Welcome 
-                    <b class="text-danger"><?php echo  ucfirst($_SESSION['MM_Username']) ; ?></b></h3>
+                    <h3 class="title text-default text-center "><b>Prayer Requests</b></h3>
 					<div class="separator"></div>
                 <div class="row">
                 
                   <div class="col-md-3">
-                <ul class="nav nav-pills nav-stacked">
-  <?php 
-
-									foreach ($item as $key => $value) {
-									    if ( $current_page == $key ) {
-									         echo '<li class="active"><a href="' . $key . '">' . $value . '</a></li>';
-									    }
-									    else {
-									    	echo '<li><a href="' . $key . '">' . $value . '</a></li>';
-									    }
-									}
-
-								   ?>
-</ul>
-
+				  <?php include("php/includes/layouts/portal_nav.php"); ?>
 
                 </div>
                <div class="col-md-9">
                	<div class="main">
-					<h3 class="title  text-default"><b>Prayer Requests</b></h3>
 									<?php if(isset($status)) : ?>
 										<p class='text-center text-uppercase' style='color:red'><?php echo $status; ?></p>
 
@@ -106,26 +100,30 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
 									<?php endif; ?> 	
 				</div>
                     
-					<div class="separator"></div>
-					 
-<div class="notes">
-        <?php foreach ($requests as $request): ?>
-            <div class="note">
-                <div class="title">
-                        <?php echo $request['name'] ?>
-                </div>
-                <div class="description">
-                    <?php echo $request['request'] ?>
-                </div>
-                <small><?php echo date('d/m/Y H:i', strtotime($request['create_date'])) ?></small>
-                <form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> " method="post" class="form-horizontal">
-                    <input type="hidden" name="i_d" value="<?php echo $request['id'] ?>">
-                    <button class="close">X</button>
-                </form>
-            </div>
-        <?php endforeach; ?>
-    </div>
+				
+	<section class="">
+	<?php foreach ($requests as $request): ?>
+                
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                      <h4 class="title "><strong><?php echo $request['name'] ?></strong></h4>
+                      <small class="title"><?php echo date('d/m/Y H:i', strtotime($request['create_date'])) ?></small>
+                        <p><?php echo $request['request'] ?> </p>
+                    
+						<form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> " method="post" class="form-horizontal">
+							<input type="hidden" name="i_d" value="<?php echo $request['id'] ?>">
+							<button class="del text-danger">Delete</button>
+							
+						</form>
+						</div>
+				</div>
 
+
+          <div class="separator"></div>
+		  <?php endforeach; ?>
+		</div>
+	</section>
+          
 
 			<br>
              </div>

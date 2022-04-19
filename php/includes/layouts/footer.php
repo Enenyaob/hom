@@ -32,8 +32,12 @@ if (isset($_GET["mailsend"])){
 												</ul>
 												<ul class="list-icons">
 													
-													<li><a href="tel:+2347037208799"><i class="fa fa-phone pr-10 text-default"></i>(+234) 700-000-0000</a></li>
-                                                    <li><a href="portal"><i class="fa fa-lock pr-10"></i>Workers Portal</a></li>
+													<li><a href="tel:+2347037208799"><i class="fa fa-phone pr-10 text-default"></i>(+234) 703-720-8799</a></li>
+													<?php if(isset($_SESSION['role'])) : ?>
+														<li><a href="<?php echo lcfirst($_SESSION['role']); ?>"><i class="fa fa-user pr-10"></i>Enter Portal</a></li>
+													<?php else: ?>	
+														<li><a href="login"><i class="fa fa-lock pr-10"></i>Workers Portal</a></li>
+													<?php endif ?>
 												</ul>
 											</div>
 											<div class="col-md-6">
