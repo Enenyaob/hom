@@ -112,7 +112,7 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
                     
 						<form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> " method="post" class="form-horizontal">
 							<input type="hidden" name="i_d" value="<?php echo $request['id'] ?>">
-							<button class="del text-danger">Delete</button>
+							<button class="del text-danger" onclick="myfunction()">Delete</button>
 							
 						</form>
 						</div>
@@ -177,6 +177,9 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
 		<script type="text/javascript" src="js/template.js"></script>
 		<!-- Custom Scripts -->
 		<script type="text/javascript" src="js/custom.js"></script>
+		<!-- alert confirm---->
+		<script type="text/javascript" src="js/validation.js"></script>
+
 
 	</body>
 </html>

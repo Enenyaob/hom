@@ -186,7 +186,7 @@
 								<h3>Need Counseling</h3>
 								<div class="separator clearfix"></div>
 								<p>Do you need counseling or someone to talk to call our counselling team.</p>
-								<a href="tel:+2347037208799" class="btn btn-default btn-animated">Call Now <i class="pl-5 fa fa-phone"></i></a>
+								<a href="tel:#" class="btn btn-default btn-animated">Call Now <i class="pl-5 fa fa-phone"></i></a>
 							</div>
 						</div>
 						<div class="col-sm-6 col-md-3">

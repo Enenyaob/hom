@@ -37,7 +37,7 @@
 									</div>
 									<ul class="list-inline hidden-sm hidden-xs">
 										
-										<li><i class="fa fa-phone pr-5 pl-10"></i>(+234) 703-720-8799</li>
+										<li><i class="fa fa-phone pr-5 pl-10"></i>(+234) 700-000-0000</li>
 										<li><i class="fa fa-envelope-o pr-5 pl-10"></i> enenyaobinna@gmail.com</li>
 									</ul>
 								</div>
@@ -55,7 +55,7 @@
 										
 										<div class="btn-group dropdown">
 										<?php if(isset($_SESSION['role'])) : ?>
-                                    <a href="<?php echo lcfirst($_SESSION['role']); ?>" class="btn btn-default btn-sm"><i class="fa fa-user"></i><?php echo $_SESSION['role']; ?></a> &nbsp;
+                                    <a href="<?php echo lcfirst($_SESSION['role']); ?>" class="btn btn-default btn-sm"><i class="fa fa-user"></i> Dashboard</a> &nbsp;
 											<a href="signout" class="btn btn-default btn-sm"><i class="fa fa-power-off "></i> Log out</a>
 										<?php else: ?>
 											<a href="login" class="btn btn-default btn-sm"><i class="fa fa-lock pr-10"></i> Login</a>
