@@ -2,7 +2,7 @@
 
 
 $dbHost = 'localhost';
-$dbName = 'dbhouseofmercy';
+$dbName = 'dbhom';
 $dbUser = 'root';
 $dbPassword = '';
 

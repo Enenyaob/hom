@@ -7,7 +7,7 @@ class Connection
     public function __construct()
     {
         try {
-            $this->pdo = new PDO('mysql:server=localhost;dbname=dbhouseofmercy', 'root', '');
+            $this->pdo = new PDO('mysql:server=localhost;dbname=dbhom', 'root', '');
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $exception) {
             echo "ERROR: Connection failed" . $exception->getMessage();

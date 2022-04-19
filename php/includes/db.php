@@ -1,6 +1,6 @@
 <?php 
 $dbhost = 'localhost';
-$dbname = 'dbhouseofmercy';
+$dbname = 'dbhom';
 $dbuser = 'root';
 $dbpass = '';
 
