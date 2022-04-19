@@ -14,7 +14,7 @@ require_once 'php/includes/portal_login.php';
 	</head>
 
 	<body class="no-trans    ">
-	<body id="home" class="no-trans  transparent-header">
+
 		<!-- scrollToTop -->
 		<!-- ================ -->
 		<div class="scrollToTop circle"><i class="icon-up-open-big"></i></div>
