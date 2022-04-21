@@ -17,7 +17,7 @@ if (empty($name) || empty($email) || empty($message)){
   $message2 ="You have received a message from " . $name . ".\n\n" . $message;
 
   
-  $myMail = "obinnaenenya@gmail.com";
+  $myMail = " "; //insert email here
  var_dump($myMail, $subject, $message2, $header);
 
       if (mail ($myMail, $subject, $message2, $header)) {
