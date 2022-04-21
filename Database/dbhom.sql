@@ -130,9 +130,9 @@ CREATE TABLE `user_pass` (
 --
 
 INSERT INTO `user_pass` (`user_id`, `details_id`, `role`, `user_name`, `secure_pass`) VALUES
-(1, 1, 'Counselor', 'swinginge', '$2y$10$Tgwcd6c.jimerapOrbRjsOv4jVmzMS9C0bcTAsgNOE6SpajmLiNzW'),
+(1, 1, 'Counselor', 'admin02', '$2y$10$zGHTcVyGelSl2FEpLR0ofOpg7NNPORZiRicQFTypbnVsJf/sbY1tu'),
 (2, 2, 'Pastorate', 'Swordcat', '$2y$10$RtMjuoprA4/TCiIXoV63TepUtc7BUh5sKk.nMR.6rWO1VQcr.63Ja'),
-(3, 3, 'Admin', 'lamilao', '$2y$10$aXhRMdpxzwYMB3CfpGz0RerhTn1gFlpqXazyeX4qQD1KRmNoeu/Qe');
+(3, 3, 'Admin', 'admin01', '$2y$10$HU922f/PHR8TPzMFerue3Ojq5xfFINVEWlvIJR0bIbkQYnGneGkD2');
 
 -- --------------------------------------------------------
 
