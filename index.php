@@ -9,7 +9,7 @@
     <?php include("php/meta.php"); ?>
         <?php include("timeline/links.php"); ?>
 	</head>
-	<body id="home" class="no-trans  transparent-header  ">
+	<body id="home" class="transparent-header  ">
 	
 
 		<!-- scrollToTop -->
