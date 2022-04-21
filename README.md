@@ -19,3 +19,5 @@ Noticing the church repeatedly asked we write our details on paper, I came up wi
 
 ## Local Server requirement
 Wamp or Xammp.
+
+**Note!! Read things to do file
